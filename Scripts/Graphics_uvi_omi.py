@@ -33,7 +33,8 @@ UV_values = np.arange(inputs["UV minium"],
                       inputs["UV maximum"])
 UVI_map = np.zeros((inputs["year final"]-inputs["year initial"]+1,
                     365))
-data = pd.read_csv(inputs["path data"]+"UVI_"+inputs["column"]+".csv",
+data = pd.read_csv("{}UVI_{}.csv".format(inputs["path data"],
+                                         inputs["column"]),
                    index_col=0)
 print(inputs["column"], data.max())
 data.index = pd.to_datetime(data.index)
