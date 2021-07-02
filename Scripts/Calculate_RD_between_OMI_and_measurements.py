@@ -39,6 +39,7 @@ monthly_mean["OMI"] = OMI_monthly_mean["CSUVindex"]
 # Lectura de los datoa de SEDEMA
 SEDEMA_data = SEDEMA_data_set(path=parameters["path SEDEMA data"],
                               type_name=parameters["wavelength"])
+SEDEMA_data.data = obtain_daily_maximum(SEDEMA_data.data)
 # Calculo del promedio mensual
 SEDEMA_monthly_mean = obtain_monthly_mean(SEDEMA_data.data)
 # Seleccionar datos que estan dentro del periodo

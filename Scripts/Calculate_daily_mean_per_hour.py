@@ -1,78 +1,34 @@
-import pandas as pd
-import os
+from Class_list import *
 
 
-def select_files(files, type_name):
-    files_type = []
-    for file in files:
-        if type_name in file:
-            files_type.append(file)
-    return files_type
-
-
-def read_data(path, name):
-    data = pd.read_csv("{}{}".format(path,
-                                     name),
-                       index_col=0)
-    data = format_date_data(data)
+def select_data(data=pd.DataFrame(), parameters={}):
+    data = data[data.index.hour >= parameters["Hour initial"]]
+    data = data[data.index.hour <= parameters["Hour final"]]
+    data = data[data.index.year >= parameters["Year initial"]]
+    data = data[data.index.year <= parameters["Year final"]]
+    data = data[data.index.month >= parameters["Month initial"]]
+    data = data[data.index.month <= parameters["Month final"]]
+    data = obtain_daily_maximum(data)
     return data
 
 
-def format_date_data(data):
-    data.index = pd.to_datetime(data.index)
-    data = data.drop(["parameter",
-                      "unit",
-                      "cve_station"],
-                     1)
-    return data
-
-
-def format_results(data, resize):
-    data = data*resize
-    data = data.round({
-        "value": 2,
-        "std": 4,
-    })
-    return data
-
-
-inputs = {
+parameters = {
     "path data": "../Data/SEDEMA_Data/Radiation/",
     "path results": "../Data/",
-    "wavelength": {"UVA": 10,
-                   "UVB": 0.0583*40, },
+    "wavelength": "UVB",
     "Hour initial": 11,
     "Hour final": 15,
     "Month initial": 6,
     "Month final": 7,
-    "Year initial": 2018,
-    "Year final": 2019,
+    "Year initial": 2000,
+    "Year final": 2001,
 }
-files = sorted(os.listdir(inputs["path data"]))
-for wavelength in inputs["wavelength"]:
-    print("Analizando {} en el periodo {}-{}".format(wavelength,
-                                                     inputs["Year initial"],
-                                                     inputs["Year final"]))
-    resize = inputs["wavelength"][wavelength]
-    files_type = select_files(files,
-                              wavelength)
-    for i, file in enumerate(files_type):
-        if i == 0:
-            data_all = read_data(inputs["path data"],
-                                 file)
-        else:
-            data = read_data(inputs["path data"],
-                             file)
-            data_all = data_all.append(data)
-    data_all = data_all[data_all.index.hour >= inputs["Hour initial"]]
-    data_all = data_all[data_all.index.hour <= inputs["Hour final"]]
-    data_all = data_all[data_all.index.year >= inputs["Year initial"]]
-    data_all = data_all[data_all.index.year <= inputs["Year final"]]
-    data_all = data_all[data_all.index.month >= inputs["Month initial"]]
-    data_all = data_all[data_all.index.month <= inputs["Month final"]]
-    data_all = data_all.resample("D").max()
-    mean = data_all.mean()["value"]*resize
-    std = data_all.std()["value"]*resize
-    print("Mean\tStd")
-    print("{:.1f}\t{:.4f}".format(mean,
-                                  std))
+SEDEMA_data = SEDEMA_data_set(path=parameters["path data"],
+                              type_name=parameters["wavelength"])
+data = select_data(data=SEDEMA_data.data,
+                   parameters=parameters)
+mean = data.mean()["value"]
+std = data.std()["value"]
+print("Mean\tStd")
+print("{:.1f}\t{:.4f}".format(mean,
+                              std))

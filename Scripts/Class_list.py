@@ -57,19 +57,16 @@ class SEDEMA_data_set:
         for i, file in enumerate(files):
             if i == 0:
                 # Lectura de los datos de la SEDEMA
-                data = self.read_data_each_file(self.path,
-                                                file)
+                self.data = self.read_data_each_file(self.path,
+                                                     file)
             else:
                 # Lectura de los datos de la SEDEMA
                 data_year = self.read_data_each_file(self.path,
                                                      file)
                 # Union de todos los dataframe en uno solo
-                data = data.append(data_year)
-        # Obtener el máximo diario de todas las estaciones
-        self.data = obtain_daily_maximum(data)
+                self.data = self.data.append(data_year)
         # Redimensionar los datos UVI
         self.data["value"] = self.data["value"]*self.resize
-        return data
 
     def select_files(self, files=[]):
         """
