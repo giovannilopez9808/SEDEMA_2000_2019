@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 
-def select_files(files, type_name):
+def select_files(files=[], type_name=""):
     files_type = []
     for file in files:
         if type_name in file:
@@ -10,7 +10,7 @@ def select_files(files, type_name):
     return files_type
 
 
-def read_data(path, name):
+def read_data(path="", name=""):
     data = pd.read_csv("{}{}".format(path,
                                      name),
                        index_col=0)
@@ -18,7 +18,7 @@ def read_data(path, name):
     return data
 
 
-def format_date_data(data):
+def format_date_data(data=pd.DataFrame()):
     data.index = pd.to_datetime(data.index)
     data = data.drop(["parameter",
                       "unit",
