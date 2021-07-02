@@ -1,0 +1,20 @@
+---
+version: 2
+multicolumn: false
+web-width: 500px
+align: center
+float: h!
+grid:
+  rows: 1
+  columns: 1
+  grid_elements:
+  - path: figures/UVI-OMI/UVI-OMI.png
+    type: static
+    from:
+    - 1
+    - 1
+    to:
+    - 1
+    - 1
+    url: "/users/279444/articles/496567/master/file/figures/UVI-OMI/UVI-OMI.png"
+    folder_url: "/users/279444/articles/496567/master/folder/figures/UVI-OMI"

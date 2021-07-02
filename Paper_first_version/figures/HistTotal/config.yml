@@ -1,0 +1,20 @@
+---
+version: 2
+multicolumn: false
+web-width: 350px
+align: center
+float: h!
+grid:
+  rows: 1
+  columns: 1
+  grid_elements:
+  - path: figures/HistTotal/HistTotal.png
+    type: static
+    from:
+    - 1
+    - 1
+    to:
+    - 1
+    - 1
+    folder_url: "/users/3629/articles/496627/master/folder/figures/HistTotal"
+    url: "/users/3629/articles/496627/master/file/figures/HistTotal/HistTotal.png"
