@@ -1,5 +1,6 @@
 from matplotlib.colors import LinearSegmentedColormap
 import matplotlib.pyplot as plt
+import pandas as pd
 import datetime
 import locale
 import os
@@ -96,3 +97,26 @@ def colormap_UVI():
                                            colors,
                                            N=n_bin)
     return cm
+
+
+def obtain_monthly_mean(data=pd.DataFrame()):
+    """
+    Calculo del promedio mensual a partir de un dataframe
+    """
+    return data.resample("MS").mean()
+
+
+def obtain_daily_maximum(data=pd.DataFrame()):
+    """
+    Calculo del promedio maximo diario
+    """
+    return data.resample("D").max()
+
+
+def select_data(data=pd.DataFrame(), date_initial="2005-01-01", date_final="2019-12-31"):
+    """
+    Selecciona los datos que se encuentran dentro de un periodo
+    """
+    data = data[data.index >= date_initial]
+    data = data[data.index <= date_final]
+    return data

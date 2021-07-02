@@ -1,129 +1,7 @@
 import matplotlib.pyplot as plt
+from Class_list import *
 import pandas as pd
 import os
-
-
-def read_OMI_data(path="", name=""):
-    """
-    Lectura de los datos de OMI
-    #### inputs
-    path -> direccion donde se encuentran los datos
-
-    name -> nombre del archivo
-    """
-    # Lectura cruda de los datos
-    data = pd.read_csv("{}UVI_{}.csv".format(path,
-                                             name),
-                       index_col=0)
-    # Formato de fecha a los datos
-    data = format_data(data)
-    return data
-
-
-def format_data(data=pd.DataFrame()):
-    """
-    Formato de fecha en el indice del dataframe
-    """
-    data.index = pd.to_datetime(data.index)
-    return data
-
-
-def obtain_monthly_mean(data=pd.DataFrame()):
-    """
-    Calculo del promedio mensual a partir de un dataframe
-    """
-    return data.resample("MS").mean()
-
-
-def read_SEDEMA_data(path="", resize=1):
-    """
-    Lectura de los datos de la SEDEMA
-    #### inputs
-    path -> direccion donde se encuentran los datos
-
-    resize -> valor para convertir los datos a UVI
-    """
-    # Listado de los archivos de la SEDEMA
-    files = sorted(os.listdir(path))
-    # Seleccionar unicamente los de UVB
-    files = select_SEDEMA_files(files=files,
-                                type_name="UVB")
-    # Ciclo para reunir todos los archivos en un solo dataframe
-    for i, file in enumerate(files):
-        if i == 0:
-            # Lectura de los datos de la SEDEMA
-            data = read_SEDEMA_data_each_file(path,
-                                              file)
-        else:
-            # Lectura de los datos de la SEDEMA
-            data_year = read_SEDEMA_data_each_file(path,
-                                                   file)
-            # Union de todos los dataframe en uno solo
-            data = data.append(data_year)
-    # Obtener el máximo diario de todas las estaciones
-    data = obtain_daily_maximum(data)
-    # Redimensionar los datos UVI
-    data["value"] = data["value"]*resize
-    return data
-
-
-def select_SEDEMA_files(files=[], type_name=""):
-    """
-    Descarta los archivos dependiendo si contienen un nombre en especifico
-    #### inputs
-    files -> listado de los archivos sin filtrar
-
-    type_name -> nombre con el cual se filtraran los archivos
-    """
-    files_type = []
-    for file in files:
-        # Filtrado
-        if type_name in file:
-            files_type.append(file)
-    return files_type
-
-
-def read_SEDEMA_data_each_file(path="", name=""):
-    """
-    Lectura de cada archivo de datos de la SEDEMA
-    """
-    # Lectura cruda de los datos
-    data = pd.read_csv("{}{}".format(path,
-                                     name),
-                       index_col=0)
-    # Formateo del dataframe
-    data = format_SEDEMA_data(data)
-    return data
-
-
-def format_SEDEMA_data(data=pd.DataFrame()):
-    """
-    Elimina columnas innecesarias y realiza el formato de fecha al indice del dataframe
-    """
-    # Formato de fecha al indice
-    data.index = pd.to_datetime(data.index)
-    # Eliminacion de columnas inncesarias
-    data = data.drop(["parameter",
-                      "unit",
-                      "cve_station"],
-                     1)
-    return data
-
-
-def obtain_daily_maximum(data=pd.DataFrame()):
-    """
-    Calculo del promedio maximo diario
-    """
-    return data.resample("D").max()
-
-
-def select_data(data=pd.DataFrame(), date_initial="2005-01-01", date_final="2019-12-31"):
-    """
-    Selecciona los datos que se encuentran dentro de un periodo
-    """
-    data = data[data.index >= date_initial]
-    data = data[data.index <= date_final]
-    return data
 
 
 def obtain_xticks(date_initial="2005-01-01", date_final="2019-12-31"):
@@ -142,17 +20,16 @@ parameters = {
     "path graphics": "../Graphics/",
     "OMI column": "CSUVindex",
     "path SEDEMA data": "../Data/SEDEMA_Data/Radiation/",
-    "wavelength": {"UVA": 10,
-                   "UVB": 0.0583*40, },
+    "wavelength": "UVB",
     "Year initial": "2005-01-01",
     "Year final": "2019-12-31",
     "fontsize": 14,
 }
 # Lectura de los datos de OMI
-OMI_data = read_OMI_data(parameters["path data"],
-                         parameters["OMI column"])
+OMI_data = OMI_data_set(parameters["path data"],
+                        parameters["OMI column"])
 # Calculo del promedio mensual
-OMI_monthly_mean = obtain_monthly_mean(OMI_data)
+OMI_monthly_mean = obtain_monthly_mean(OMI_data.data)
 # Seleccionar datos que estan dentro del periodo
 OMI_monthly_mean = select_data(data=OMI_monthly_mean,
                                date_initial=parameters["Year initial"],
@@ -160,10 +37,10 @@ OMI_monthly_mean = select_data(data=OMI_monthly_mean,
 monthly_mean = pd.DataFrame(index=OMI_monthly_mean.index)
 monthly_mean["OMI"] = OMI_monthly_mean["CSUVindex"]
 # Lectura de los datoa de SEDEMA
-SEDEMA_data = read_SEDEMA_data(path=parameters["path SEDEMA data"],
-                               resize=parameters["wavelength"]["UVB"])
+SEDEMA_data = SEDEMA_data_set(path=parameters["path SEDEMA data"],
+                              type_name=parameters["wavelength"])
 # Calculo del promedio mensual
-SEDEMA_monthly_mean = obtain_monthly_mean(SEDEMA_data)
+SEDEMA_monthly_mean = obtain_monthly_mean(SEDEMA_data.data)
 # Seleccionar datos que estan dentro del periodo
 SEDEMA_monthly_mean = select_data(data=SEDEMA_monthly_mean,
                                   date_initial=parameters["Year initial"],
