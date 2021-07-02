@@ -156,6 +156,8 @@ OMI_monthly_mean = obtain_monthly_mean(OMI_data)
 OMI_monthly_mean = select_data(data=OMI_monthly_mean,
                                date_initial=parameters["Year initial"],
                                date_final=parameters["Year final"])
+monthly_mean = pd.DataFrame(index=OMI_monthly_mean.index)
+monthly_mean["OMI"] = OMI_monthly_mean["CSUVindex"]
 # Lectura de los datoa de SEDEMA
 SEDEMA_data = read_SEDEMA_data(path=parameters["path SEDEMA data"],
                                resize=parameters["wavelength"]["UVB"])
@@ -165,10 +167,14 @@ SEDEMA_monthly_mean = obtain_monthly_mean(SEDEMA_data)
 SEDEMA_monthly_mean = select_data(data=SEDEMA_monthly_mean,
                                   date_initial=parameters["Year initial"],
                                   date_final=parameters["Year final"])
+monthly_mean["SEDEMA"] = SEDEMA_monthly_mean["value"]
 # Calculo de la RD
-RD = (OMI_monthly_mean["CSUVindex"] -
-      SEDEMA_monthly_mean["value"])/SEDEMA_monthly_mean["value"]*100
-print("La diferencial relativa promedio es {:.2f}".format(RD.mean()))
+monthly_mean["RD"] = (monthly_mean["OMI"] -
+                      monthly_mean["SEDEMA"])/monthly_mean["SEDEMA"]*100
+monthly_mean.to_csv("{}Monthly_mean_RD.csv".format(parameters["path data"]),
+                    float_format="%.2f")
+print("La diferencial relativa promedio es {:.2f}".format(
+    monthly_mean["RD"].mean()))
 # Inicio del ploteo de los datos
 dates, years = obtain_xticks(parameters["Year initial"],
                              parameters["Year final"])
@@ -182,7 +188,7 @@ plt.xlim(pd.to_datetime(parameters["Year initial"]),
 plt.xticks(dates, years)
 plt.ylim(0, 120)
 plt.yticks([tick for tick in range(0, 120, 10)])
-plt.scatter(RD.index, RD)
+plt.scatter(monthly_mean.index, monthly_mean["RD"])
 plt.grid(ls="--",
          color="#000000",
          alpha=0.5)
