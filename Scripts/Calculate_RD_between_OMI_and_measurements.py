@@ -146,6 +146,7 @@ parameters = {
                    "UVB": 0.0583*40, },
     "Year initial": "2005-01-01",
     "Year final": "2019-12-31",
+    "fontsize": 14,
 }
 # Lectura de los datos de OMI
 OMI_data = read_OMI_data(parameters["path data"],
@@ -179,17 +180,25 @@ print("La diferencial relativa promedio es {:.2f}".format(
 dates, years = obtain_xticks(parameters["Year initial"],
                              parameters["Year final"])
 plt.figure(figsize=(10, 4))
-plt.subplots_adjust(left=0.055,
-                    bottom=0.09,
+plt.subplots_adjust(left=0.085,
+                    bottom=0.13,
                     right=0.971,
                     top=0.926)
+plt.xlabel("Years",
+           fontsize=parameters["fontsize"])
 plt.xlim(pd.to_datetime(parameters["Year initial"]),
          pd.to_datetime(parameters["Year final"]))
-plt.xticks(dates, years)
+plt.xticks(dates, years,
+           fontsize=parameters["fontsize"])
+plt.ylabel("Percentage difference",
+           fontsize=parameters["fontsize"])
 plt.ylim(0, 120)
-plt.yticks([tick for tick in range(0, 120, 10)])
-plt.scatter(monthly_mean.index, monthly_mean["RD"])
+plt.yticks([tick for tick in range(0, 120, 10)],
+           fontsize=parameters["fontsize"])
+plt.scatter(monthly_mean.index, monthly_mean["RD"],
+            c="#9D2449")
 plt.grid(ls="--",
          color="#000000",
          alpha=0.5)
-plt.show()
+plt.savefig("{}Monthly_mean_RD.png".format(parameters["path graphics"]),
+            dpi=400)
