@@ -45,16 +45,18 @@ inputs = {
     "Hour final": 15,
     "Month initial": 6,
     "Month final": 7,
-    "Year initial": 2000,
-    "Year final": 2001,
+    "Year initial": 2018,
+    "Year final": 2019,
 }
 files = sorted(os.listdir(inputs["path data"]))
 for wavelength in inputs["wavelength"]:
+    print("Analizando {} en el periodo {}-{}".format(wavelength,
+                                                     inputs["Year initial"],
+                                                     inputs["Year final"]))
     resize = inputs["wavelength"][wavelength]
     files_type = select_files(files,
                               wavelength)
     for i, file in enumerate(files_type):
-        print("Analizando archivo {}".format(file))
         if i == 0:
             data_all = read_data(inputs["path data"],
                                  file)
@@ -69,4 +71,8 @@ for wavelength in inputs["wavelength"]:
     data_all = data_all[data_all.index.month >= inputs["Month initial"]]
     data_all = data_all[data_all.index.month <= inputs["Month final"]]
     data_all = data_all.resample("D").max()
-    print(data_all.max()*resize)
+    mean = data_all.mean()["value"]*resize
+    std = data_all.std()["value"]*resize
+    print("Mean\tStd")
+    print("{:.1f}\t{:.4f}".format(mean,
+                                  std))
