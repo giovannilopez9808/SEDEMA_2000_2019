@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 from Class_list import *
-import pandas as pd
-import os
 
 
 def obtain_xticks(date_initial="2005-01-01", date_final="2019-12-31"):
