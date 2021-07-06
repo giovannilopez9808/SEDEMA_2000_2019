@@ -193,7 +193,7 @@ reviewed by \citet{Bais_2015}). Increases in UV have been estimated as a consequ
 of emission reductions over the last decades, e.g. in China,\citep{Hollaway_2019,Li_2018,Wang_2020}
 and have led to less-than-expected
 reductions in photochemical smog, in part due to stronger UV
-photochemistry.\citep{Wang_2019,Gao_2020,Ma_2020}
+photochemistry.\citep{Wang_2019,Gao_2020,Ma_2021}
 Emission reductions have also occurred
 globally during the 2020 COVID-19 pandemic,\citep{Bauwens_2020,Venter_2020}
 but ground-level ozone in some polluted areas has actually
@@ -244,7 +244,7 @@ scientifically arbitrary.
 
 The UVI is recognized by the World Health and Meteorological
 Organizations (WHO and WMO) as a standardized metric of UV
-radiation\cite{who2002} for global public information. An advantage
+radiation\citep{who2002} for global public information. An advantage
 of using the UVI as (one) measure of UV radiation is that it is being
 increasingly observed or calculated and disseminated, enabling more
 objective comparisons among seasons and locations. The UVI observations
@@ -353,7 +353,7 @@ levels, the hourly averages for ozone (O\textsubscript{3}), carbon
 monoxide (CO), nitrogen dioxide (NO\textsubscript{2}), sulfur
 dioxide~(SO\textsubscript{2}) and particle matter with diameter
 sizes~\(\le\) 10 ~$\mu$m (PM\textsubscript{10}), were downloaded
-from the SIMAT.\cite{atmosfrico} For purposes of assessing the
+from the SIMAT.\cite{pollutants_data} For purposes of assessing the
 influence on the UV Index at solar noon, only values obtained between
 11h and 15h CST were considered for the trends analysis. Pollutant
 measurements are conducted by the SIMAT using regulatory-grade
@@ -376,9 +376,9 @@ Measurements were conducted with a CIMEL sun photometer model CE-318,
 which is an automatic sun-sky-scanning spectral radiometer of
 the AErosol RObotic NETwork (AERONET~\citep{Holben_1998}). The data
 Product Level 2.0 and 1.5 (only in 2019) were selected, and annual
-averages AOD\textsubscript{340} were calculated along the period 2000-2019,
-except for the year 2011 due to there were no measurements. A previous study of the AOD
-behavior from 2000 to 2014 demonstrated that data gaps did not
+averages AOD\textsubscript{340} were calculated for the period 2000-2019,
+except for the year 2011 which contained large data gaps and was therefore not used.
+A previous study of the AOD behavior from 2000 to 2014 demonstrated that data gaps did not
 significantly change the trends calculated for this.\citep{Carabali_2017}
 Only 8\% of the data between the years 2014 and 2019 were missing.
 The largest data gap occurred in 2018 when the instrument was returned for calibration.
@@ -386,8 +386,8 @@ The largest data gap occurred in 2018 when the instrument was returned for calib
 
 \subsection{Satellite data}
 
-The UV Index data derived from satellite measurements of reflected radiance
-were used for comparison with the ground-based measurements.
+The UV Index data derived from satellite-based measurements
+were used for comparing to the ground-based measurements.
 These data were provided by the Ozone Monitoring
 Instrument (OMI)~on board of AURA-NASA satellite.\citep{dcio} OMI
 is operated in cooperation between the Netherlands Agency for Aerospace
@@ -395,8 +395,7 @@ Programmes (NIVR), the Finnish Meteorological Institute (FMI) and NASA.
 OMI performs observations over a geographical area of 13$\times$24km\textsuperscript{2} at nadir. For
 the coordinates (19.33°N, 99.18°W) and elevation (2268 m asl) of Mexico City,
 the satellite overpass time is between 19:00h - 21:00h UTC (20:00h - 22:00h CET).
-Measurements of the ozone profile and the attenuation by clouds are used via a
-radiative transfer model to estimate the UVI at the ground.\cite{Tanskanen_2006}
+The OMI instrument measures reflected and backscattered radiances of the atmosphere-surface system at several UV wavelengths. The ozone column is estimated by differential absorption of several adjacent wavelengths in the O\textsubscript{3} Huggins band\citep{Veefkind_2006} while clouds are estimated from the reflectivity at a wavelength not affected by O\textsubscript{3} absorption (360 nm, \citet{Tanskanen_2007}). A correction for absorbing aerosols is made using a global aerosol climatology\citep{Arola_2009}.
 The UV Index used for Mexico City corresponds to values at local noon time and clear sky
 from OMUVB Level 2 OVP data product, version 1.3 and collection 3.
 
@@ -562,19 +561,15 @@ two decades.
 The UV Index computed from satellite-based observations
 over the period 2005-2019 is shown in
 Figure~{\ref{485116}}. The satellite-derived UVIs vary
-from 8 in winter to 16 in summer, both values being substantially higher
+from 8 in winter to 16 in summer, these values being substantially higher
 than the ground-based observations (ca. 7 for winter and 11 for summer,
-see Fig.~{\ref{310112}}). We hypothesize that this
+see Fig.~{\ref{310112}}). For both datasets the maximum values
+are reached in June and July of each year. We hypothesize that this
 large difference between satellite-based estimation and ground-based
 observation of the UV index is due to the intense air pollution of
 Mexico City.~A rather similar behavior was detected in Santiago city,
-Chile.\citep{Cabrera_2012}
+Chile.\citep{Cabrera_2012} Although the OMI data are corrected for climatological aerosol absorption\citep{Arola_2009}, this correction likely underestimates the absorption within the polluted Mexico City BL.
 
-Close inspection of Figure~{\ref{485116}} shows that the maximum values
-are reached in June and July of each year.
-While early OMI estimates of the UVI did not account for the boundary layer aerosol absorption,
-the current version (1.3) includes the postcorrection by \citet{Arola_2009}
-for absorbing aerosols based on global monthly aerosol climatology.
 
 \begin{figure}[H]
   \begin{center}
@@ -659,10 +654,10 @@ relative to the TUV values of 15.6 for a pristine atmosphere.
     SIMAT average maxima 2018-2019                  & 12.3 $\pm$  1.3   \\ \hline
     SIMAT maximum value reached in period 2000-2019 & 15.0              \\ \hline
     \begin{tabular}[c]{@{}l@{}}OMI maximum value reached in period 2005-2019,\\ not corrected for BL aerosols\end{tabular}                      & 16.6              \\ \hline
-    \begin{tabular}[c]{@{}l@{}}TUV "zero" pollution \\ AOD 0, O3 0 ppb, NO2 0 ppb, SO2 0 ppb\end{tabular}                      & 16.1              \\ \hline
-    \begin{tabular}[c]{@{}l@{}}TUV pristine pollution\\ AOD 0.05, O3 10 ppb, NO2 0 ppb, SO2 0 ppb\end{tabular}                      & 15.6              \\ \hline
-    \begin{tabular}[c]{@{}l@{}}TUV 2019:\\ AOD 0.5, O3 50 ppb, NO2 20 ppb, SO2 1 ppb\end{tabular}                      & 12.1              \\ \hline
-    \begin{tabular}[c]{@{}l@{}}TUV 2000:\\ AOD 0.7, O3 70 ppb, NO2 40 ppb, SO2 20 ppb\end{tabular}                      & 10.2              \\ \hline
+    \begin{tabular}[c]{@{}l@{}}TUV "zero" pollution \\ AOD 0, O\textsubscript{3} 0 ppb, NO\textsubscript{2} 0 ppb, SO\textsubscript{2} 0 ppb\end{tabular}                      & 16.1              \\ \hline
+    \begin{tabular}[c]{@{}l@{}}TUV pristine pollution\\ AOD 0.05, O\textsubscript{3} 10 ppb, NO\textsubscript{2} 0 ppb, SO\textsubscript{2} 0 ppb\end{tabular}                      & 15.6              \\ \hline
+    \begin{tabular}[c]{@{}l@{}}TUV 2019:\\ AOD 0.5, O\textsubscript{3} 50 ppb, NO\textsubscript{2} 20 ppb, SO\textsubscript{2} 1 ppb\end{tabular}                      & 12.1              \\ \hline
+    \begin{tabular}[c]{@{}l@{}}TUV 2000:\\ AOD 0.7, O\textsubscript{3} 70 ppb, NO\textsubscript{2} 40 ppb, SO\textsubscript{2} 20 ppb\end{tabular}                      & 10.2              \\ \hline
   \end{tabular}
   \caption{{UVI maxima for June-July: averages and standard deviation from ground-based data
         for the years 2018-2019 and 2000-2001. UVI maximum value reached in the period 2000-2019 for
@@ -719,7 +714,7 @@ UV reductions by air pollutants are expected to be most severe near the
 surface, while chemical reactions leading to photochemical smog occur
 throughout the vertical extent of the BL.
 Figure~{\ref{973680}} shows the vertical profiles of
-photolysis coefficients (the reciprocals of photolytic lifetimes) for
+photolysis coefficients (the reciprocals of photolytic lifetimes) computed with the TUV model, for
 two key reactions, the photolysis of O\textsubscript{3} to yield excited
 oxygen atoms O(1D), and the photolysis of NO\textsubscript{2}. In the
 absence of optically active pollutants, these coefficients would be
@@ -769,7 +764,7 @@ longer wavelengths are available in Mexico City or elsewhere.
 
 Two decades of observations in Mexico City demonstrate unequivocally
 that air pollution reduces UV radiation at the ground. The ground-based
-observations are well below data derived from satellite-based
+observations are well below values derived from satellite-based
 observations. Although ideally both data sets should match,
 the satellite has a limitation to seeing boundary layer absorbers.
 When typical values of the pollutants: aerosols,
@@ -793,7 +788,7 @@ observed UVI, again in good agreement with the model-predicted changes.
     NO\textsubscript{2} ppb                        & 40                            & -0.9                          & 20          & -0.5  & 0.4 \\
     SO\textsubscript{2} ppb                        & 30                            & -0.8                          & 1           & -0.04 & 0.8 \\ \hline
   \end{tabular}
-  \caption{Contributions of individual pollutants to UV Index changes. (a) Values used one at the time, with the others held at zero. (b) UVI deviation from the zero-pollution value of 16.1 (from Table \ref{table:TUVmodel}). (c) 2019-2000 UVI change due to changes in each pollutant.}
+  \caption{Contributions of individual pollutants to UV Index changes. (a) Values used one at the time, with the others held at zero. (b) UVI deviation from the zero-pollution value of 16.1 (from Table \ref{table:TUVmodel}). (c) 2000-2019 UVI change due to changes in each pollutant.}
   \label{table:year2000-2019}
 \end{table}
 
@@ -814,12 +809,6 @@ and other UV-related health effects. The efforts that Mexico City has
 made to improve air quality have reduced levels
 of most air pollutants. Nevertheless, they caused an increase in UV
 radiation that reaches the surface.
-
-A limitation of the present work is our focus on daily maximum values,
-which largely exclude cloud cover. Absorption within clouds can be
-enhanced by the long path lengths of multiply scattered photons, so that accurate quantification of UV
-effects of clouds in polluted environments remains a significant
-challenge and interesting opportunity for future work.
 
 Finally, based on our results, the solar radiation monitoring network could be
 improved by adding observation sites within or close to the Valley of Mexico, with minor
