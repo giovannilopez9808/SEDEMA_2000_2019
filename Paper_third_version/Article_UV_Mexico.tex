@@ -13,6 +13,9 @@
 \usepackage{chemformula} % Formula subscripts using \ch{}
 \usepackage[T1]{fontenc} % Use modern font encodings
 \usepackage{lineno}
+\usepackage{achemso}
+\setkeys{acs}{maxauthors=20}
+\setkeys{acs}{etalmode=truncate}
 \usepackage[colorlinks = true,
             linkcolor = blue,
             urlcolor  = blue,
@@ -789,11 +792,11 @@ observed UVI, again in good agreement with the model-predicted changes.
   \centering
   \begin{tabular}{cc}
     \hline
-    Pollutant & UVI Change\\ \hline
-    AOD & 0.8\\
-    O\textsubscript{3} & 0.4\\
-    NO\textsubscript{2} & 0.4\\ 
-    SO\textsubscript{2} & 0.5 \\ \hline
+    Pollutant           & UVI Change \\ \hline
+    AOD                 & 0.8        \\
+    O\textsubscript{3}  & 0.4        \\
+    NO\textsubscript{2} & 0.4        \\
+    SO\textsubscript{2} & 0.5        \\ \hline
   \end{tabular}
   \caption{Contributions of individual pollutants to the 2000-2019 UV Index changes. Baseline calculation for 2000 conditions (AOD = 0.7, O\textsubscript{3} = 70 ppb, NO\textsubscript{2} = 40 ppb, SO\textsubscript{2} = 20 ppb). Individual pollutant contributions are estimated by adjusting each pollutant, one at the time, to its 2019 value (AOD = 0.5, O\textsubscript{3} = 50 ppb, NO\textsubscript{2} = 20 ppb, SO\textsubscript{2} = 1 ppb), while maintaining the others at their 2000 value.}
   \label{table:year2000-2019}

@@ -66,7 +66,7 @@ plt.xlim(pd.to_datetime(parameters["Year initial"]),
          pd.to_datetime(parameters["Year final"]))
 plt.xticks(dates, years,
            fontsize=parameters["fontsize"])
-plt.ylabel("Percentage difference",
+plt.ylabel("Percentage relative difference (%)",
            fontsize=parameters["fontsize"])
 plt.ylim(0, 120)
 plt.yticks([tick for tick in range(0, 120, 10)],
