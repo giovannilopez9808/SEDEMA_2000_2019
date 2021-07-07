@@ -13,9 +13,6 @@
 \usepackage{chemformula} % Formula subscripts using \ch{}
 \usepackage[T1]{fontenc} % Use modern font encodings
 \usepackage{lineno}
-\usepackage{achemso}
-\setkeys{acs}{maxauthors=20}
-\setkeys{acs}{etalmode=truncate}
 \usepackage[colorlinks = true,
             linkcolor = blue,
             urlcolor  = blue,
@@ -199,8 +196,7 @@ globally during the 2020 COVID-19 pandemic,\citep{Bauwens_2020,Venter_2020}
 but ground-level ozone in some polluted areas has actually
 increased,\citep{Shi_2020,Le_2020} due at least in part to the increased UV
 radiation. Unfortunately, the observational data base of relevant UV
-radiation remains rather sparse to evaluate such model-derived
-hypotheses.~~
+radiation remains rather sparse to evaluate such model-predicted feedbacks between chemistry and radiation.~~
 
 The environment of Mexico City is of particular interest for several
 reasons: (1) Nearly 23 million people inhabit the Mexico City
@@ -243,8 +239,8 @@ express the UVI in small integer numbers, but is otherwise
 scientifically arbitrary.
 
 The UVI is recognized by the World Health and Meteorological
-Organizations (WHO and WMO) as a standardized metric of UV
-radiation\citep{who2002} for global public information. An advantage
+Organizations (WHO and WMO) as a standardized measure of UV
+radiation\cite{who2002} for global public information. An advantage
 of using the UVI as (one) measure of UV radiation is that it is being
 increasingly observed or calculated and disseminated, enabling more
 objective comparisons among seasons and locations. The UVI observations
@@ -387,7 +383,7 @@ The largest data gap occurred in 2018 when the instrument was returned for calib
 \subsection{Satellite data}
 
 The UV Index data derived from satellite-based measurements
-were used for comparing to the ground-based measurements.
+were used for comparison with the ground-based measurements.
 These data were provided by the Ozone Monitoring
 Instrument (OMI)~on board of AURA-NASA satellite.\citep{dcio} OMI
 is operated in cooperation between the Netherlands Agency for Aerospace
@@ -395,7 +391,8 @@ Programmes (NIVR), the Finnish Meteorological Institute (FMI) and NASA.
 OMI performs observations over a geographical area of 13$\times$24km\textsuperscript{2} at nadir. For
 the coordinates (19.33°N, 99.18°W) and elevation (2268 m asl) of Mexico City,
 the satellite overpass time is between 19:00h - 21:00h UTC (20:00h - 22:00h CET).
-The OMI instrument measures reflected and backscattered radiances of the atmosphere-surface system at several UV wavelengths. The ozone column is estimated by differential absorption of several adjacent wavelengths in the O\textsubscript{3} Huggins band\citep{Veefkind_2006} while clouds are estimated from the reflectivity at a wavelength not affected by O\textsubscript{3} absorption (360 nm, \citet{Tanskanen_2007}). A correction for absorbing aerosols is made using a global aerosol climatology\citep{Arola_2009}.
+The OMI instrument measures reflected and backscattered radiances of the atmosphere-surface system at several UV wavelengths. The ozone column is estimated by differential absorption of several adjacent
+wavelengths in the O\textsubscript{3} Huggins band\citep{Veefkind_2006}, while clouds are estimated from the reflectivity at a wavelength not affected by O\textsubscript{3} absorption (360 nm, \citet{Tanskanen_2007}). A correction for absorbing aerosols is made using a global aerosol climatology.\citep{Arola_2009}
 The UV Index used for Mexico City corresponds to values at local noon time and clear sky
 from OMUVB Level 2 OVP data product, version 1.3 and collection 3.
 
@@ -436,7 +433,7 @@ the free troposphere (decreasing vertically with an exponential scale
 height of 4 km, and 0.5 remaining in the BL). The calculated UVI
 differed by less than 1\%. Thus, as long as the total AOD is known,
 knowledge of the exact vertical aerosol profile is not critical for
-ground-level UVI but would obviously affect the vertical structure of
+ground-level UVI, but would obviously affect the vertical structure of
 photolysis frequencies.
 
 Radiative transfer calculations were carried out with the
@@ -563,9 +560,8 @@ over the period 2005-2019 is shown in
 Figure~{\ref{485116}}. The satellite-derived UVIs vary
 from 8 in winter to 16 in summer, these values being substantially higher
 than the ground-based observations (ca. 7 for winter and 11 for summer,
-see Fig.~{\ref{310112}}). For both datasets the maximum values
-are reached in June and July of each year. We hypothesize that this
-large difference between satellite-based estimation and ground-based
+see Fig.~{\ref{310112}}). The maximum values are reached in June and July of each year for both data sets.
+We hypothesize that this large difference between satellite-based estimation and ground-based
 observation of the UV index is due to the intense air pollution of
 Mexico City.~A rather similar behavior was detected in Santiago city,
 Chile.\citep{Cabrera_2012} Although the OMI data are corrected for climatological aerosol absorption\citep{Arola_2009}, this correction likely underestimates the absorption within the polluted Mexico City BL.
@@ -653,15 +649,16 @@ relative to the TUV values of 15.6 for a pristine atmosphere.
     SIMAT average maxima 2000-2001                  & 9.9  $\pm$  1.2   \\ \hline
     SIMAT average maxima 2018-2019                  & 12.3 $\pm$  1.3   \\ \hline
     SIMAT maximum value reached in period 2000-2019 & 15.0              \\ \hline
-    \begin{tabular}[c]{@{}l@{}}OMI maximum value reached in period 2005-2019,\\ not corrected for BL aerosols\end{tabular}                      & 16.6              \\ \hline
+    OMI maximum value reached in period 2005-2019   & 16.6              \\ \hline
     \begin{tabular}[c]{@{}l@{}}TUV "zero" pollution \\ AOD 0, O\textsubscript{3} 0 ppb, NO\textsubscript{2} 0 ppb, SO\textsubscript{2} 0 ppb\end{tabular}                      & 16.1              \\ \hline
-    \begin{tabular}[c]{@{}l@{}}TUV pristine pollution\\ AOD 0.05, O\textsubscript{3} 10 ppb, NO\textsubscript{2} 0 ppb, SO\textsubscript{2} 0 ppb\end{tabular}                      & 15.6              \\ \hline
+    \begin{tabular}[c]{@{}l@{}
+      }TUV pristine pollution \\ AOD 0.05, O\textsubscript{3} 10 ppb, NO\textsubscript{2} 0 ppb, SO\textsubscript{2} 0 ppb\end{tabular}                      & 15.6              \\ \hline
     \begin{tabular}[c]{@{}l@{}}TUV 2019:\\ AOD 0.5, O\textsubscript{3} 50 ppb, NO\textsubscript{2} 20 ppb, SO\textsubscript{2} 1 ppb\end{tabular}                      & 12.1              \\ \hline
     \begin{tabular}[c]{@{}l@{}}TUV 2000:\\ AOD 0.7, O\textsubscript{3} 70 ppb, NO\textsubscript{2} 40 ppb, SO\textsubscript{2} 20 ppb\end{tabular}                      & 10.2              \\ \hline
   \end{tabular}
   \caption{{UVI maxima for June-July: averages and standard deviation from ground-based data
         for the years 2018-2019 and 2000-2001. UVI maximum value reached in the period 2000-2019 for
-        UVI ground-based and the same for satellite in the period 2005-2019. TUV calculations for different conditions.
+        UVI ground-based and the same for satellite in the period 2005-2019. TUV calculations for specified conditions.
       }}
   \label{table:TUVmodel}
 \end{table}
@@ -679,15 +676,26 @@ UVI reductions due to pollutants, shown in Table
 the observed UVI reductions, that a compelling case can be made for a
 dominant role of air pollutants in the long-term UVI trends.
 
-Table~{\ref{table:year2000-2019}} shows the
-contributions to UVI reductions from individual pollutants. Aerosols are
-seen to be the major factor in both time periods, followed by
-O\textsubscript{3}, NO\textsubscript{2}, and SO\textsubscript{2}. The
-2000-2019 UVI increase results in comparable proportions from
-less aerosols, less SO\textsubscript{2}, and the combined reductions in
-O\textsubscript{3} and NO\textsubscript{2}.
+Table~{\ref{table:year2000-2019}} shows the contribution of different pollutants
+to the UVI increase between 2000 and 2019, computed with the TUV model.
+The year 2000 was taken as the base case, and each pollutant was decreased
+to its 2019 value individually while the others were maintained at their 2000 value.
+Decreasing aerosol AOD has been the largest driver of the UVI changes,
+but the absorption by gaseous pollutants has also decreased significantly.
+Additional future reductions in AOD, NO\textsubscript{2}, and O\textsubscript{3} could increase the
+UVI further, while the low SO\textsubscript{2} levels reached by 2019 are expected
+to have negligible effects in the UVI.
 
-Comparable UV reductions, of 30-40\% due to aerosols, were reported by
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{figures/Monthly_mean_RD.png}
+  \caption{The percentage relative difference (\% RD) of the satellite and ground-based monthly means UVI for the period 2005-2019.}
+  \label{fig:percentage_relative_difference}
+\end{figure}
+
+Figure \ref{fig:percentage_relative_difference} shows the percentage relative difference between monthly means
+satellite-based and ground-based data with respect to the last one. The mean percentage relative difference
+was 35\% in the period 2005-2019. Comparable UV reductions, of 30-40\% due to aerosols, were reported by
 \citet{Panicker_2009} over Pune, India from April 2004 to
 March 2005, with sensitivity coefficients (i.e. change in UVI per unit
 change in AOD) similar to those found here in Table~\ref{table:TUVmodel}.
@@ -779,16 +787,15 @@ observed UVI, again in good agreement with the model-predicted changes.
 
 \begin{table}[H]
   \centering
-  \begin{tabular}{lccccc}
+  \begin{tabular}{cc}
     \hline
-    \multicolumn{1}{c}{\multirow{2}{*}{Pollutant}} & \multicolumn{2}{c}{Year 2000} & \multicolumn{2}{c}{Year 2019} & 2000-2019                 \\ \cline{2-6}
-    \multicolumn{1}{c}{}                           & poll. level (a)               & UVI (b)                       & poll. level & UVI   & (c) \\ \hline
-    AOD                                            & 0.7                           & -3.7                          & 0.5         & -2.7  & 1.0 \\
-    O\textsubscript{3} ppb (DU)                    & 70 (14)                       & -1.4                          & 50 (10)     & -1.0  & 0.4 \\
-    NO\textsubscript{2} ppb                        & 40                            & -0.9                          & 20          & -0.5  & 0.4 \\
-    SO\textsubscript{2} ppb                        & 30                            & -0.8                          & 1           & -0.04 & 0.8 \\ \hline
+    Pollutant & UVI Change\\ \hline
+    AOD & 0.8\\
+    O\textsubscript{3} & 0.4\\
+    NO\textsubscript{2} & 0.4\\ 
+    SO\textsubscript{2} & 0.5 \\ \hline
   \end{tabular}
-  \caption{Contributions of individual pollutants to UV Index changes. (a) Values used one at the time, with the others held at zero. (b) UVI deviation from the zero-pollution value of 16.1 (from Table \ref{table:TUVmodel}). (c) 2000-2019 UVI change due to changes in each pollutant.}
+  \caption{Contributions of individual pollutants to the 2000-2019 UV Index changes. Baseline calculation for 2000 conditions (AOD = 0.7, O\textsubscript{3} = 70 ppb, NO\textsubscript{2} = 40 ppb, SO\textsubscript{2} = 20 ppb). Individual pollutant contributions are estimated by adjusting each pollutant, one at the time, to its 2019 value (AOD = 0.5, O\textsubscript{3} = 50 ppb, NO\textsubscript{2} = 20 ppb, SO\textsubscript{2} = 1 ppb), while maintaining the others at their 2000 value.}
   \label{table:year2000-2019}
 \end{table}
 
