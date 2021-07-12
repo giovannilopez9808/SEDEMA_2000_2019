@@ -60,7 +60,7 @@ plt.subplots_adjust(left=0.085,
                     bottom=0.13,
                     right=0.971,
                     top=0.926)
-plt.xlabel("Years",
+plt.xlabel("Year",
            fontsize=parameters["fontsize"])
 plt.xlim(pd.to_datetime(parameters["Year initial"]),
          pd.to_datetime(parameters["Year final"]))
