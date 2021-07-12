@@ -68,7 +68,7 @@ plt.xticks(dates, years,
            fontsize=parameters["fontsize"])
 plt.ylabel("Deviation (%)",
            fontsize=parameters["fontsize"])
-plt.ylim(0, 120)
+plt.ylim(0, 110)
 plt.yticks([tick for tick in range(0, 120, 10)],
            fontsize=parameters["fontsize"])
 plt.scatter(monthly_mean.index, monthly_mean["RD"],
