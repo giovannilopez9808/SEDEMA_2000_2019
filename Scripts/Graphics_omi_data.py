@@ -32,32 +32,36 @@ def drop_data_useless(data, columns, limit):
     return data
 
 
-def plot_data(data,  date_initial, date_final, path, name):
+def plot_data(data,  date_initial, date_final, path, name, fontsize=14):
     plt.subplots(figsize=(10, 4))
     plt.subplots_adjust(top=0.963,
-                        bottom=0.13,
+                        bottom=0.2,
                         left=0.062,
                         right=0.967,
                         hspace=0.2,
                         wspace=0.2)
-    plt.xlabel("year")
-    plt.ylabel("UV Index")
+    plt.xlabel("Year",
+               fontsize=fontsize+1)
+    plt.ylabel("UV Index",
+               fontsize=fontsize+1)
     dates, xtick = obtain_xticks(date_initial,
                                  date_final)
     plt.xlim(pd.to_datetime(date_initial).date(),
              pd.to_datetime(date_final).date())
-    plt.xticks(dates, xtick)
+    plt.xticks(dates, xtick,
+               fontsize=fontsize)
     plt.scatter(data.index, data,
                 c="#023e8a",
                 marker=".")
     plt.ylim(0, 18)
-    plt.yticks(np.arange(0, 20, 2))
+    plt.yticks(np.arange(0, 20, 2),
+               fontsize=fontsize)
     plt.grid(ls="--",
              color="#000000",
              alpha=0.5)
+    plt.tight_layout()
     plt.savefig("{}{}.png".format(path,
                                   name))
-    plt.show()
 
 
 def obtain_xticks(date_initial, date_final):
@@ -94,10 +98,6 @@ data = obtain_data_in_period(data,
 data = drop_data_useless(data,
                          inputs["UVIcolumns"],
                          inputs["UVI limit"])
-year = data[data.index.month >= 6]
-year = year[year.index.month <= 7]
-#print(year[year == year.max()])
-print(year)
 for uvicolumn in inputs["UVIcolumns"]:
     print("Creando archivo {}".format(uvicolumn))
     data_UVI = data[uvicolumn]
