@@ -51,7 +51,7 @@ def plot_data(data,  date_initial, date_final, path, name, fontsize=14):
     plt.xticks(dates, xtick,
                fontsize=fontsize)
     plt.scatter(data.index, data,
-                c="#023e8a",
+                c="#6C48A9",
                 marker=".")
     plt.ylim(0, 18)
     plt.yticks(np.arange(0, 20, 2),
