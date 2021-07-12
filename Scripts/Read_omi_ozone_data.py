@@ -7,7 +7,9 @@ def date_format(data):
         data["Datetime"].str[4:6]+"-"+data["Datetime"].str[6:8]
     data["Date"] = pd.to_datetime(data["Date"])
     data.index = data["Date"]
-    data = data.drop(["Date", "Datetime"], 1)
+    data = data.drop(["Date",
+                      "Datetime"],
+                     1)
     return data
 
 
@@ -66,7 +68,9 @@ inputs = {
     "day initial": "2005-01-01",
     "day final": "2019-12-31",
 }
-data = pd.read_fwf(inputs["path data"]+inputs["file data"]+inputs["product"]+".dat",
+data = pd.read_fwf("{}{}{}.dat".format(inputs["path data"],
+                                       inputs["file data"],
+                                       inputs["product"]),
                    skiprows=inputs["skiprows"])
 data = date_format(data)
 data = clean_data(data,
