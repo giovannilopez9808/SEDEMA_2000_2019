@@ -13,6 +13,7 @@ inputs = {
                    "PM10",
                    "SO2"],
     "path data": "../Data/SEDEMA_Data/Pollutants/",
+    "path results": "../Data",
     "path stations": "../Stations/",
     "file": "CDMX.csv"
 }
@@ -21,12 +22,13 @@ files = sorted((listdir(inputs["path data"])))
 n_param = len(inputs["pollutants"])
 info = np.zeros([n_param, 365, 20, 2])
 for file in files:
-    dates, stations_name, parameters_name, data_list = np.loadtxt(inputs["path data"]+file,
+    dates, stations_name, parameters_name, data_list = np.loadtxt("{}{}".format(inputs["path data"],
+                                                                                file),
                                                                   skiprows=11, usecols=[0, 1, 2, 3],
                                                                   delimiter=",",
                                                                   dtype=str,
                                                                   unpack=True)
-    print("Analizando "+file)
+    print("Analizando {}".format(file))
     for date, station_name, pollutant_name, data in zip(dates, stations_name, parameters_name, data_list):
         date, hour = obtain_date_and_hour(date)
         # <---------------------------------Verificacion de la hora--------------------------->
@@ -47,7 +49,10 @@ for file in files:
 # <---------------------------------Escritura de los Data---------------------------------->
 print("Calculando promedios y escribiendo Data")
 for parameter, n in zip(inputs["pollutants"], range(n_param)):
-    file = open("../Data/"+parameter+"_"+inputs["file"], "w")
+    file = open("{}{}_{}".format(inputs["path results"],
+                                 parameter,
+                                 inputs["file"]),
+                "w")
     file.write("Date")
     for year in range(20):
         file.write(",{}".format(year+2000))
