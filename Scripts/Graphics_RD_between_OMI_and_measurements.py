@@ -56,10 +56,12 @@ print("La diferencial relativa promedio es {:.2f}".format(
 dates, years = obtain_xticks(parameters["Year initial"],
                              parameters["Year final"])
 plt.figure(figsize=(10, 4))
-plt.subplots_adjust(left=0.085,
-                    bottom=0.13,
-                    right=0.971,
-                    top=0.926)
+plt.subplots_adjust(top=0.963,
+                    bottom=0.2,
+                    left=0.062,
+                    right=0.967,
+                    hspace=0.2,
+                    wspace=0.2)
 plt.xlabel("Year",
            fontsize=parameters["fontsize"])
 plt.xlim(pd.to_datetime(parameters["Year initial"]),
@@ -76,5 +78,6 @@ plt.scatter(monthly_mean.index, monthly_mean["RD"],
 plt.grid(ls="--",
          color="#000000",
          alpha=0.5)
+plt.tight_layout()
 plt.savefig("{}Monthly_mean_RD.png".format(parameters["path graphics"]),
             dpi=400)

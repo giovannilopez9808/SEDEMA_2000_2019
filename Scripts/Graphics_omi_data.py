@@ -41,9 +41,9 @@ def plot_data(data,  date_initial, date_final, path, name, fontsize=14):
                         hspace=0.2,
                         wspace=0.2)
     plt.xlabel("Year",
-               fontsize=fontsize+1)
+               fontsize=fontsize)
     plt.ylabel("UV Index",
-               fontsize=fontsize+1)
+               fontsize=fontsize)
     dates, xtick = obtain_xticks(date_initial,
                                  date_final)
     plt.xlim(pd.to_datetime(date_initial).date(),
