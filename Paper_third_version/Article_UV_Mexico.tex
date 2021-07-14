@@ -149,13 +149,12 @@ Urban photochemistry}
   systematically lower than the satellite-based estimates, by ca. 40\% in
   2000 and 25\% in 2019. Calculations with a radiative transfer model and
   observed concentrations of air pollutants explained well the difference
-  between satellite- and ground-based UVI, and showed specific
-  contributions from aerosols in the boundary layer and the free troposphere,
-  O\textsubscript{3}, NO\textsubscript{2}, and SO\textsubscript{2}, in
-  decreasing order of importance. Such large changes in UV radiation
-  between 2000 and 2019 have important implications ranging from human
-  health (skin cancer and cataract induction) to air pollution control
-  (photochemical smog formation).
+  between satellite and ground-based UVI, and showed specific contributions
+  from aerosols, O\textsubscript{3}, NO\textsubscript{2},
+  and SO\textsubscript{2}, in decreasing order of importance. Such large
+  changes in UV radiation between 2000 and 2019 have important implications
+  ranging from human health (skin cancer and cataract induction) to air
+  pollution control (photochemical smog formation).
 \end{abstract}
 
 
@@ -569,7 +568,7 @@ Chile.\citep{Cabrera_2012} Although the OMI data are corrected for climatologica
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=0.75\columnwidth]{figures/CSUVindex}
+    \includegraphics[width=0.95\columnwidth]{figures/CSUVindex}
     \caption{{UV Index at solar noon for clear sky recorded by OMI-Aura/NIVR-FMI-NASA,
           from 2005 to 2019.
             {\label{485116}}%
@@ -579,7 +578,7 @@ Chile.\citep{Cabrera_2012} Although the OMI data are corrected for climatologica
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\columnwidth]{figures/Monthly_mean_RD.png}
+  \includegraphics[width=0.95\columnwidth]{figures/Monthly_mean_RD.png}
   \caption{Deviation (\%) of satellite-derived UVI from the ground-based monthly means UVI for the period 2005-2019.}
   \label{fig:percentage_relative_difference}
 \end{figure}
@@ -685,7 +684,7 @@ relative to the TUV values of 15.6 for a pristine atmosphere.
     \begin{tabular}[c]{@{}l@{}}TUV 2000:\\ AOD 0.7, O\textsubscript{3} 70 ppb, NO\textsubscript{2} 40 ppb, SO\textsubscript{2} 20 ppb\end{tabular}                      & 10.2              \\ \hline
   \end{tabular}
   \caption{{Comparison of June-July UVI maxima measured directly (SIMAT), inferred from satellite-based
-        observations (OMI), and modeled for different pollution levels (TUV).
+        observations (OMI), and modeled for different pollution levels (TUV calculation for 21 June at solar noon).
       }}
   \label{table:TUVmodel}
 \end{table}
@@ -703,15 +702,43 @@ UVI reductions due to pollutants, shown in Table
 the observed UVI reductions, that a compelling case can be made for a
 dominant role of air pollutants in the long-term UVI trends.
 
-Table~{\ref{table:year2000-2019}} shows the contribution of different pollutants
-to the UVI increase between 2000 and 2019, computed with the TUV model.
-The year 2000 was taken as the base case, and each pollutant was decreased
-to its 2019 value individually while the others were maintained at their 2000 value.
-Decreasing aerosol AOD has been the largest driver of the UVI changes,
-but the absorption by gaseous pollutants has also decreased significantly.
-Additional future reductions in AOD, NO\textsubscript{2}, and O\textsubscript{3} could increase the
-UVI further, while the low SO\textsubscript{2} levels reached by 2019 are expected
-to have negligible effects in the UVI.
+Table~{\ref{table:year2000-2019}} shows the contribution to UVI reductions from individual pollutants,
+computed with the TUV model for conditions similar to those in Table {\ref{table:TUVmodel}} (21 June solar noon).
+If the pollutant levels of the year 2000 are added one at the time to a pollution-free atmosphere
+(see middle column of Table {\ref{table:year2000-2019}}),
+aerosols account for more than half of the total UVI reduction,
+with the gases O\textsubscript{3}, NO\textsubscript{2}, and SO\textsubscript{2},
+contributing in order of importance to the remainder. It should be noted that the sum
+of these individual contributions (-6.8) differs from the value obtained if these pollutants
+are applied simultaneously rather than one at the time (-5.9, from Table {\ref{table:TUVmodel}}).
+This non-additivity results mainly from (1) saturation of overlapping absorption spectra,
+especially for O\textsubscript{3} and SO\textsubscript{2} at the shortest wavelengths, and (2)
+interactions between absorption and scattering, e.g. aerosols causing a change in photon
+pathlengths through absorbing gases; both effects are treated in the TUV model.
+
+The right column of Table {\ref{table:year2000-2019}} shows the contribution of the individual pollutants to the UVI
+increase experienced over the years 2000-2019. For this calculation, the pollutants
+were decreased individually to their 2019 level while the others were held at the 2000 values.
+Aerosol reductions were the largest single factor responsible for the UV increase,
+but more than half of the increase was due to reductions of the gases, of which the near-complete
+elimination of SO\textsubscript{2} was most important. The total increase computed from the sum (1.8) is in
+good agreement with the 2000-2019 increase in which all pollutants were changed simultaneously
+(1.9, from Table {\ref{table:TUVmodel}}), as smaller changes in UVI mitigate non-linearities.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lcc}
+    \hline
+    Pollutant           & $\Delta$UVI, 2000 - zero pollution (a) & $\Delta$UVI, 2000-2019 (b) \\ \hline
+    AOD                 & -3.7                                   & 0.8                        \\
+    O\textsubscript{3}  & -1.4                                   & 0.3                        \\
+    NO\textsubscript{2} & -0.9                                   & 0.3                        \\
+    SO\textsubscript{2} & -0.8                                   & 0.4                        \\
+    \textbf{Total}      & \textbf{-6.8}                          & \textbf{1.8}               \\\hline
+  \end{tabular}
+  \caption{Contribution of different pollutants to UV Index changes in Mexico City, calculated with the TUV model for 21 June at solar noon. (a) Pollutants from year 2000 added to clean atmosphere, one at the time. (b) Pollutants lowered from 2000 to 2019 levels, one at the time.}
+  \label{table:year2000-2019}
+\end{table}
 
 UV reductions by air pollutants are expected to be most severe near the
 surface, while chemical reactions leading to photochemical smog occur
@@ -735,8 +762,8 @@ term variations in these photolysis coefficients.
     \caption{{Vertical profiles of the photolysis coefficients for the
           reaction~\(O_3 + h\nu \rightarrow O(1D) + O_2\) (top axis, blue)~\(NO_2 + h\nu \rightarrow O+NO \) (bottom
           axis, red) for zero pollution (solid) and Mexico City in the years 2000
-          (dashed) and 2019 (dotted)
-          {\label{973680}}%
+          (dashed) and 2019 (dotted). TUV calculation for 21 June at solar noon.
+            {\label{973680}}%
         }}
   \end{center}
 \end{figure}
@@ -779,21 +806,6 @@ are explained and can be attributed quantitatively to individual
 observed pollutants. Long term improvements in air quality over the last two decades,
 were accompanied by statistically significant increases in the
 observed UVI, in agreement with the model-predicted changes.
-
-
-\begin{table}[H]
-  \centering
-  \begin{tabular}{cc}
-    \hline
-    Pollutant           & UVI Change \\ \hline
-    AOD                 & 0.8        \\
-    O\textsubscript{3}  & 0.4        \\
-    NO\textsubscript{2} & 0.4        \\
-    SO\textsubscript{2} & 0.5        \\ \hline
-  \end{tabular}
-  \caption{Contributions of individual pollutants to the 2000-2019 UV Index changes. Baseline calculation for 2000 conditions (AOD = 0.7, O\textsubscript{3} = 70 ppb, NO\textsubscript{2} = 40 ppb, SO\textsubscript{2} = 20 ppb). Individual pollutant contributions are estimated by adjusting each pollutant, one at the time, to its 2019 value (AOD = 0.5, O\textsubscript{3} = 50 ppb, NO\textsubscript{2} = 20 ppb, SO\textsubscript{2} = 1 ppb), while maintaining the others at their 2000 value.}
-  \label{table:year2000-2019}
-\end{table}
 
 The reductions in surface UV radiation with respect to an ideally clear
 atmosphere -- by nearly 40\% in 2000 and still 20\% in 2019 -- are
