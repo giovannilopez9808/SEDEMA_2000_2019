@@ -75,7 +75,7 @@ parameters = {
     "graphics name": "UV_Moving_Average",
     "path data": "../Data/",
     "file data": "Max_Monthly_UVB.csv",
-    "file moving average": "Moving_average_UVI",
+    "file moving average": "UVI_monthly_average",
     "file Max Monthly UVI": "Max_Monthly_UVI",
     "file Fit UVI": "Fit_UVI",
     "Months moving Average": 3,
