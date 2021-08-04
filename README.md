@@ -4,4 +4,4 @@ Repositorio que contiene los algoritmos de análisis de datos de la SEDEMA duran
 
 Arículo publicado: [![DOI:10.1021/acs.est.0c08515](http://img.shields.io/badge/DOI-10.1021/acs.est.0c08515-34a0a4.svg)](https://doi.org/10.1021/acs.est.0c08515)
 
-![paper](Graphics/paper.svg)
+![paper](Graphics/paper.png)
