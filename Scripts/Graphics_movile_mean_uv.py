@@ -26,22 +26,20 @@ def read_data(path="", file=""):
     return data
 
 
-def obtain_moving_average_monthly(data=pd.DataFrame(), month=3):
-    """
-    Obtiene el moving average a partir de un dataframe
-    --------------------------------------------
-    Inputs:
-    data    : Dataframe que contiene los datos
-    month   : Numero en el cual se realizara el moving
-              average
-    --------------------------------------------
-    Return:
-    Dataframe con el moving average
-    """
-    return data.rolling(window=month).mean()
+def obtain_xticks(years=[]):
+    years.append(2020)
+    years = np.array(years)
+    xticks = []
+    years_ticks = []
+    for year in years:
+        years_ticks.append((year-years[0])*12)
+        if year % 5 != 0:
+            year = ""
+        xticks.append(year)
+    return years, xticks, years_ticks
 
 
-def cut_data(data=pd.DataFrame(), date_i="2000-12-31", date_f="2020-12-31"):
+def select_data_from_period(data=pd.DataFrame(), date_i="2000-12-31", date_f="2020-12-31"):
     """
     Limpíeza de loss datos a seleccionando una fecha inicial
     y fecha final
@@ -74,7 +72,7 @@ def obtain_yearly_mean(data=pd.DataFrame()):
 
 parameters = {
     "path graphics": "../Graphics/",
-    "graphics name": "UV_Moving_Average2",
+    "graphics name": "UV_Moving_Average",
     "path data": "../Data/",
     "file data": "Max_Monthly_UVB.csv",
     "file moving average": "Moving_average_UVI",
@@ -87,12 +85,9 @@ parameters = {
 }
 data = read_data(parameters["path data"],
                  parameters["file data"])
-# <------------Moving average------------->
-moving_average_data = obtain_moving_average_monthly(data["Max"],
-                                                    parameters["Months moving Average"])
-data = cut_data(data,
-                "2000-01-01",
-                "2019-12-01",)
+data = select_data_from_period(data,
+                               "2000-01-01",
+                               "2019-12-01",)
 # <--------------Tendencia----------------->
 yearly_mean = obtain_yearly_mean(data)
 mean_data = yearly_mean.mean()
@@ -106,42 +101,32 @@ print("UVI:\t\t{:.2f}\t{:.1f}\t{:.1f}".format(fit[0],
 
 fit = np.poly1d(fit)
 years = list(yearly_mean.index.year)
-years.append(2020)
-years = np.array(years)
+years, xticks, years_ticks = obtain_xticks(years)
 Fit_line = fit(years)
 # <-------Inicio de la grafica UVyearlyError-------->
-plt.xticks((years-parameters["year initial"])*12,
-           years,
-           rotation=60,
+plt.xticks(years_ticks,
+           xticks,
            fontsize=12)
 plt.yticks(fontsize=12)
-plt.title("Period 2000-2019",
-          fontsize="large")
 plt.ylabel("UV Index",
+           fontsize="large")
+plt.xlabel("Year",
            fontsize="large")
 plt.xlim(0,
          (parameters["year final"]-parameters["year initial"]+1)*12)
-plt.ylim(0,
+plt.ylim(2,
          16)
+data["Max+sd"] = data["Max"]+data["std"]
+data["Max-sd"] = data["Max"]-data["std"]
 # Barras de error
-plt.errorbar(range(len(data["Max"])),
-             list(data["Max"]),
-             yerr=data["std"],
-             marker="o",
-             linewidth=1,
-             ls="None",
-             alpha=0.8,
-             color="black",
-             capsize=5,
-             markersize=2,
-             label="Monthly average and SD")
-# Ploteo del moving average para 3 meses
-plt.plot(range(len(moving_average_data)),
-         list(moving_average_data),
-         label="Moving average",
-         linewidth=3,
-         color="#118ab2",
-         alpha=0.75)
+plt.fill_between(range(len(data["Max"])),
+                 list(data["Max+sd"]),
+                 list(data["Max-sd"]),
+                 color="#cadefb",
+                 label="Monthly average $\pm$ SD")
+plt.plot(range(len(data["Max"])),
+         list(data["Max"]),
+         color="#000000")
 # Ploteo de linear fit
 plt.plot((years-parameters["year initial"])*12,
          Fit_line,
@@ -155,10 +140,10 @@ plt.subplots_adjust(top=0.922,
                     hspace=0.2,
                     wspace=0.2
                     )
-plt.legend(ncol=3,
-           mode="expand",
+plt.legend(ncol=2,
            frameon=False,
-           fontsize="small")
+           loc="upper center")
+plt.tight_layout()
 # Guardado de la grafica
 plt.savefig("{}{}.png".format(parameters["path graphics"],
                               parameters["graphics name"]),
@@ -168,9 +153,9 @@ data.to_csv("{}{}.csv".format(parameters["path data"],
                               parameters["file Max Monthly UVI"]),
             float_format="%.2f")
 # Write Moving average results
-moving_average_data.to_csv("{}{}.csv".format(parameters["path data"],
-                                             parameters["file moving average"]),
-                           float_format="%.1f")
+# moving_average_data.to_csv("{}{}.csv".format(parameters["path data"],
+#                                              parameters["file moving average"]),
+#                            float_format="%.1f")
 # Write Fit Results
 file_fit = open("{}{}.csv".format(parameters["path data"],
                                   parameters["file Fit UVI"]),
